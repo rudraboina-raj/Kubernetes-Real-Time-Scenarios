@@ -194,3 +194,163 @@ kubectl rollout restart deployment <deployment-name>
   * Pod → Service → Ingress → Node → Cluster
 
 ---
+
+
+# 🚀 Kubernetes Application Failures: Complete Guide
+
+A practical guide to common Kubernetes failures, reasons, and troubleshooting steps used in real-world production.
+
+---
+
+## 🔴 1. Pod-Level Failures
+
+### Common Issues
+
+* **CrashLoopBackOff** → Application crash, missing ENV variables
+* **Pending** → No nodes, insufficient CPU/memory, PVC issues
+* **ImagePullBackOff** → Wrong image name, tag, or registry access
+
+### 🔍 Troubleshooting
+
+```bash
+kubectl get pods
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+```
+
+---
+
+## 🟠 2. ConfigMap & Environment Variable Errors
+
+### Reasons
+
+* Wrong key names
+* Incorrect mount paths
+* Missing ConfigMaps or Secrets
+
+### 🛠 Fix
+
+```bash
+kubectl describe cm <name>
+```
+
+* Verify mounted files inside the pod
+* Restart pods after config changes
+
+---
+
+## 🟡 3. Resource Failures
+
+### Common Problems
+
+* **OOMKilled (Out of Memory)**
+* CPU throttling
+
+### 🛠 Solution
+
+* Increase memory/CPU limits
+* Optimize application resource usage
+
+```bash
+kubectl top pod
+```
+
+---
+
+## 🔵 4. Networking Issues
+
+### Failures
+
+* Service not reachable
+* No endpoints
+* Ingress misconfiguration
+
+### 🔍 Checks
+
+```bash
+kubectl get svc
+kubectl get endpoints
+```
+
+* Verify labels, ports, and ingress rules
+
+---
+
+## 🟣 5. Storage Failures
+
+### Issues
+
+* PVC not bound
+* StorageClass missing
+* Volume mount errors
+
+### 🔍 Troubleshooting
+
+```bash
+kubectl describe pvc
+```
+
+* Verify StorageClass and access modes
+
+---
+
+## 🔴 6. Node & Cluster Issues
+
+### Reasons
+
+* Node NotReady
+* Disk or memory pressure
+* Kubelet issues
+
+### 🛠 Fix
+
+```bash
+kubectl describe node
+```
+
+* Check node resource usage
+
+---
+
+## 🟠 7. Security & Policy Failures
+
+### Problems
+
+* RBAC permission denied
+* NetworkPolicy blocking traffic
+
+### 🔍 Checks
+
+* RoleBindings & ServiceAccounts
+* NetworkPolicy rules
+
+---
+
+## ⭐ Golden Troubleshooting Steps (Always Follow This Order)
+
+```text
+1. kubectl get pods
+2. kubectl describe pod <pod-name>
+3. kubectl logs <pod-name>
+4. Check ConfigMaps & Secrets
+5. Verify Services & Ingress
+6. Check Node & Resources
+7. Review Events & Logs
+```
+
+---
+
+## ✅ Key Takeaway
+
+* Most Kubernetes failures are **misconfigurations**, not bugs
+* Strong troubleshooting skills = **faster recovery + stable systems**
+
+---
+
+## 📌 Tags
+
+#Kubernetes #DevOps #CloudComputing #Containerization
+#K8s #SRE #DevOpsEngineering #CloudNative
+#KubernetesTroubleshooting #CKA #CKAD #Microservices
+
+---
