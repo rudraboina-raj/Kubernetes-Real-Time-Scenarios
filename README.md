@@ -354,3 +354,116 @@ kubectl describe node
 #KubernetesTroubleshooting #CKA #CKAD #Microservices
 
 ---
+
+# 🚀 Kubernetes Commands You Actually Use Daily
+
+A practical cheat sheet of kubectl commands used in real-world DevOps work.
+
+---
+
+## 🔍 Debugging & Monitoring (Most Used)
+
+```bash
+kubectl get pods -o wide
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+kubectl logs -f <pod-name>
+kubectl top pods
+kubectl get events
+```
+
+👉 These are your **first steps during any issue**
+
+---
+
+## ⚙️ Working with Pods
+
+```bash
+kubectl exec -it <pod-name> -- /bin/sh
+kubectl delete pod <pod-name>
+kubectl cp <pod-name>:<path> <local-path>
+```
+
+👉 Used for **troubleshooting & quick fixes**
+
+---
+
+## 🚀 Deployments & Scaling
+
+```bash
+kubectl get deployments
+kubectl describe deployment <name>
+kubectl scale deployment <name> --replicas=3
+kubectl rollout status deployment <name>
+kubectl rollout restart deployment <name>
+```
+
+👉 Daily work for **releases & scaling**
+
+---
+
+## 🌐 Services & Networking
+
+```bash
+kubectl get svc
+kubectl describe svc <name>
+kubectl port-forward svc/<name> 8080:80
+```
+
+👉 Useful for **local debugging & access**
+
+---
+
+## 📦 Config & Resources
+
+```bash
+kubectl apply -f <file>
+kubectl delete -f <file>
+kubectl edit <resource>
+kubectl get all
+```
+
+👉 Used in almost **every deployment**
+
+---
+
+## 🔐 Namespaces & Context
+
+```bash
+kubectl get ns
+kubectl config get-contexts
+kubectl config use-context <name>
+kubectl config set-context --current --namespace=<ns>
+```
+
+👉 Avoid deploying to **wrong environment 😅**
+
+---
+
+## ⚡ Golden Rule
+
+> Kubernetes is not about commands...
+> It's about how fast you can **debug, fix, and deploy**
+
+---
+
+## 📌 Pro Tips
+
+* Always start with:
+
+  ```
+  kubectl get pods → describe → logs
+  ```
+* Use `-o wide` for more details
+* Use `-f` (follow) for real-time logs
+* Prefer `rollout restart` instead of deleting pods manually
+
+---
+
+## 📌 Tags
+
+#Kubernetes #DevOps #K8s #CloudComputing
+#Kubectl #SRE #CloudNative #PlatformEngineering
+
+---
+
