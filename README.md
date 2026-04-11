@@ -467,3 +467,76 @@ kubectl config set-context --current --namespace=<ns>
 
 ---
 
+# 🚨 Kubernetes Service Not Reachable? Debugging Guide
+
+This is one of the most common issues DevOps engineers face in Kubernetes.
+
+- Pod is running ✅  
+- Service exists ✅  
+- But still... no response ❌  
+
+Before you panic, follow this simple debugging checklist 👇
+
+---
+
+## 🔍 Step-by-step Troubleshooting
+
+### ✅ 1. Check if Service exists
+```bash
+kubectl get svc
+```
+
+### ✅ 2. Verify Service configuration
+```bash
+kubectl describe svc <service-name>
+```
+
+### ✅ 3. Confirm Pods are running
+```bash
+kubectl get pods -l app=<label>
+```
+
+### ✅ 4. Check Endpoints
+```bash
+kubectl get endpoints <service-name>
+```
+
+👉 If endpoints are empty → your Service is NOT linked to Pods.
+
+### ✅ 5. Test DNS resolution
+```bash
+nslookup <service-name>
+```
+
+### ✅ 6. Test connectivity from another Pod
+```bash
+kubectl exec -it <pod-name> -- curl <service-name>:<port>
+```
+
+---
+
+## 💡 Most Common Root Causes
+
+❌ Wrong selector labels  
+❌ Pods not running  
+❌ Port mismatch (Service vs Container)  
+❌ Network Policies blocking traffic  
+
+---
+
+## 🔥 Pro Tip
+
+👉 80% of the time, the issue is:
+
+**Label mismatch OR no endpoints**
+
+Always check:
+- Selectors
+- Endpoints  
+
+➡️ This saves a lot of debugging time.
+
+---
+
+## 🏷️ Tags
+`Kubernetes` `DevOps` `K8s` `Troubleshooting` `CloudNative` `PlatformEngineering`
