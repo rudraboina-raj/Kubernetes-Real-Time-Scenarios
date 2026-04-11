@@ -563,3 +563,147 @@ Always check:
 
 ## 🏷️ Tags
 `Kubernetes` `DevOps` `K8s` `Troubleshooting` `CloudNative` `PlatformEngineering`
+
+
+# 🚀 Kubernetes Fundamentals Cheat Sheet
+
+If you're working in DevOps, Cloud, or Platform Engineering, understanding Kubernetes is essential.
+
+Here’s a simplified breakdown of core Kubernetes concepts every engineer should know 👇
+
+---
+
+## 🧭 Kubernetes Architecture Diagram
+
+```mermaid
+flowchart TD
+
+A[Control Plane] --> B[API Server]
+A --> C[Scheduler]
+A --> D[Controller Manager]
+A --> E[etcd]
+
+B --> F[Worker Node 1]
+B --> G[Worker Node 2]
+
+F --> H[Kubelet]
+F --> I[Kube-proxy]
+F --> J[Pods]
+
+G --> K[Kubelet]
+G --> L[Kube-proxy]
+G --> M[Pods]
+
+J --> N[Container Runtime]
+M --> N
+```
+
+---
+
+## 📌 Core Concepts
+
+### 🔹 1. Architecture
+- Control Plane → Brain of the cluster  
+- Worker Nodes → Where applications run  
+
+---
+
+### 🔹 2. Control Plane Components
+- API Server → Entry point  
+- etcd → Stores cluster state  
+- Scheduler → Assigns Pods  
+- Controller Manager → Maintains desired state  
+
+---
+
+### 🔹 3. Worker Node Components
+- Kubelet → Communicates with control plane  
+- Kube-proxy → Handles networking  
+- Container Runtime → Runs containers  
+
+---
+
+### 🔹 4. Pod (Smallest Unit)
+- A Pod = one or more containers  
+- Shares network, storage, namespace  
+
+---
+
+### 🔹 5. Deployments & ReplicaSets
+- Declarative app management  
+- Maintains desired number of Pods  
+- Supports rolling updates  
+
+---
+
+### 🔹 6. StatefulSets
+- Used for stateful apps (DBs)  
+- Stable identity + persistent storage  
+
+---
+
+### 🔹 7. Jobs & CronJobs
+- Jobs → Run once  
+- CronJobs → Run on schedule  
+
+---
+
+### 🔹 8. DaemonSets
+- Runs one Pod per node  
+- Used for logging, monitoring agents  
+
+---
+
+### 🔹 9. Services (Internal Communication)
+- Stable IP / DNS for Pods  
+- Load balancing inside cluster  
+
+---
+
+### 🔹 10. Service Types
+- ClusterIP → Internal access  
+- NodePort → Exposed via node  
+- LoadBalancer → External access (cloud)  
+
+---
+
+### 🔹 11. Ingress
+- Manages external HTTP/HTTPS routing  
+- Supports domain & path-based routing  
+
+---
+
+### 🔹 12. Persistent Storage (PV & PVC)
+- PV → Actual storage  
+- PVC → Request for storage  
+
+---
+
+### 🔹 13. ConfigMaps & Secrets
+- ConfigMaps → Non-sensitive config  
+- Secrets → Sensitive data (encoded)  
+
+---
+
+### 🔹 14. Horizontal Pod Autoscaler (HPA)
+- Automatically scales Pods  
+- Based on CPU / Memory  
+
+---
+
+### 🔹 15. Health Checks
+- Liveness Probe → Restart if unhealthy  
+- Readiness Probe → Controls traffic  
+
+---
+
+## 🔥 Key Takeaway
+
+👉 Kubernetes follows a **declarative model**
+
+You define the desired state, and Kubernetes continuously works to match it.
+
+---
+
+## 🏷️ Tags
+`Kubernetes` `DevOps` `Cloud` `K8s` `PlatformEngineering` `Containers`
