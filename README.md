@@ -479,6 +479,29 @@ Before you panic, follow this simple debugging checklist 👇
 
 ---
 
+## 🧭 Architecture Flow (Diagram)
+
+```mermaid
+flowchart TD
+
+A[Client / Pod A] -->|Request| B[Service]
+
+B -->|Routes via Selector| C{Endpoints Available?}
+
+C -->|❌ No| D[No Response]
+C -->|✅ Yes| E[Target Pods]
+
+E --> F{Pods Healthy?}
+
+F -->|❌ No| G[Pod Failure]
+F -->|✅ Yes| H[Response Returned]
+
+D --> I[Check Labels / Endpoints]
+G --> J[Check Pod Status / Logs]
+```
+
+---
+
 ## 🔍 Step-by-step Troubleshooting
 
 ### ✅ 1. Check if Service exists
